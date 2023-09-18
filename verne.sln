@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "I2C.Channel", "src\I2C.Channel\I2C.Channel.csproj", "{92FE7366-34C0-4B0A-B365-2910E3555002}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "I2C.Components", "src\I2C.Components\I2C.Components.csproj", "{F13F2C44-DACA-4776-9FA5-8AF010BC2AB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Verne.Console", "src\Verne.Console\Verne.Console.csproj", "{7F272685-4CA0-4282-A5DA-0C66B5545BC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Verne.Server", "src\Verne.Server\Verne.Server.csproj", "{190127E6-0250-4353-B632-29A82425851B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92FE7366-34C0-4B0A-B365-2910E3555002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FE7366-34C0-4B0A-B365-2910E3555002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FE7366-34C0-4B0A-B365-2910E3555002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FE7366-34C0-4B0A-B365-2910E3555002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13F2C44-DACA-4776-9FA5-8AF010BC2AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13F2C44-DACA-4776-9FA5-8AF010BC2AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13F2C44-DACA-4776-9FA5-8AF010BC2AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13F2C44-DACA-4776-9FA5-8AF010BC2AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F272685-4CA0-4282-A5DA-0C66B5545BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F272685-4CA0-4282-A5DA-0C66B5545BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F272685-4CA0-4282-A5DA-0C66B5545BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F272685-4CA0-4282-A5DA-0C66B5545BC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{190127E6-0250-4353-B632-29A82425851B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190127E6-0250-4353-B632-29A82425851B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190127E6-0250-4353-B632-29A82425851B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190127E6-0250-4353-B632-29A82425851B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40F295CF-E8A9-4076-BD47-AEA3A386FF30}
+	EndGlobalSection
+EndGlobal
