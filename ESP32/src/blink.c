@@ -16,7 +16,7 @@
 #include <time.h>
 #include <unistd.h>
 
-int Leds[] = {2, 4, 5, 18, 19, 23, 13, 12, 14, 27};
+int Leds[] = {2, 4, 5, 18, 19, 23, 13, 12, 14, 21, 26, 17, 16};
 
 uint8_t i2c_data[2];
 

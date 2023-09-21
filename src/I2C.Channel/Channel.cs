@@ -7,7 +7,7 @@ namespace I2C;
 
 public class Channel : IChannel
 {
-    private I2cDevice _device;
+    private readonly I2cDevice _device;
 
     public Channel(IOptions<ChannelConfiguration> configuration) : this(configuration.Value.Bus, configuration.Value.Address)
     {
@@ -22,6 +22,7 @@ public class Channel : IChannel
     {
         try
         {
+            System.Console.WriteLine($"Sending Data to  device address : {_device.ConnectionSettings.DeviceAddress} on bus {_device.ConnectionSettings.BusId}");
             _device.Write(data);
         }
         catch (System.Exception)
