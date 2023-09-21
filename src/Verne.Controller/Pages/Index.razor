@@ -44,7 +44,7 @@
 		led.State = (bool)value?.Value ;	
 		Console.WriteLine($"Change Led {led.Index} ({led.Name}) to {(led.State ? "on" : "off")}");
 
-		var res = http.PostAsync($"/Led/{led.Index}/{(led.State ? 255 : 0)}", null);
+		var res = http.PostAsync($"/Led/{led.Index}/{(led.State ? 1 : 0)}", null);
 
 	}
 }
