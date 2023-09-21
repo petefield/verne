@@ -22,7 +22,7 @@ public class Channel : IChannel
     {
         try
         {
-            System.Console.WriteLine($"Sending Data to  device address : {_device.ConnectionSettings.DeviceAddress} on bus {_device.ConnectionSettings.BusId}");
+            System.Console.WriteLine($"Sending Data to device address : {_device.ConnectionSettings.DeviceAddress} on bus {_device.ConnectionSettings.BusId}");
             _device.Write(data);
         }
         catch (System.Exception)

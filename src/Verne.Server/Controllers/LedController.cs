@@ -35,7 +35,6 @@ namespace verne.Server.Controllers
         {
             _logger.LogInformation($"Setting {id} to {brightness}");
             _ledStrip[id] = (byte)brightness;
-            _logger.LogInformation(_ledStrip.ToString());
         }
 
         [HttpPost]

@@ -11,7 +11,7 @@ public class LedStrip : ILedStrip
     public LedStrip(int length, IChannel channel, bool autoRefresh = false)
     {
         _leds = new byte[length];
-        _channel = channel; // new Channel(1, address);
+        _channel = channel;
         _autoRefresh = autoRefresh;
     }
 

@@ -13,13 +13,11 @@ while(true){
 
     for (int i = 0; i < strip.Length; i++)
     {
-           Console.WriteLine(i);
-
+        Console.WriteLine($"Set Led[{i}] to {state}");
         strip[i] = state ? (byte)1 : (byte)0;
         Task.Delay(1000).Wait();
     }
                 
-    Console.WriteLine("swtich");
     state = !state;
 }
 

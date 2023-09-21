@@ -26,25 +26,25 @@
 
 	IEnumerable<LED> Leds = new List<LED>
 	{
-		new LED(1,	"Roof - Red" ),
-		new LED(2,	"Roof - Right 1" ),
-		new LED(3,	"Roof - Right 2" ),
-		new LED(4,	"Roof - Right 3" ),
-		new LED(5,	"Roof - Right 4" ),
-		new LED(6,  "Undefined" , enabled: false),
-		new LED(7,  "Roof - Left 1" ),
-		new LED(8,  "Roof - Left 2" ),
-		new LED(9,  "Roof - Left 3" ),
-		new LED(10, "Roof - Left 4" ),
-		new LED(11, "Floor - Lamp" ),
+		new LED(0,	"Roof - Red" ),
+		new LED(1,	"Roof - Right 1" ),
+		new LED(2,	"Roof - Right 2" ),
+		new LED(3,	"Roof - Right 3" ),
+		new LED(4,	"Roof - Right 4" ),
+		new LED(5,  "Undefined" , enabled: false),
+		new LED(6,  "Roof - Left 1" ),
+		new LED(7,  "Roof - Left 2" ),
+		new LED(8,  "Roof - Left 3" ),
+		new LED(9, "Roof - Left 4" ),
+		new LED(10, "Floor - Lamp" ),
 	};
 
-	void ChangeHandler(ChangeEventArgs value, LED led)
+	void ChangeHandler(ChangeEventArgs eventArgs, LED led)
 	{
-		led.State = (bool)value?.Value ;	
-		Console.WriteLine($"Change Led {led.Index} ({led.Name}) to {(led.State ? "on" : "off")}");
-
-		var res = http.PostAsync($"/Led/{led.Index}/{(led.State ? 1 : 0)}", null);
-
+		if(eventArgs != null)
+		{
+			led.State = (bool)eventArgs.Value ;	
+			var res = http.PostAsync($"/Led/{led.Index}/{(led.State ? 1 : 0)}", null);
+		}
 	}
 }
