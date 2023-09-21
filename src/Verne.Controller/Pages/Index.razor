@@ -1,0 +1,50 @@
+﻿@page "/"
+@inject HttpClient http;
+
+
+<PageTitle>Index</PageTitle>
+
+@foreach(var Led in Leds)
+{
+	if (Led.Enabled)
+	{
+		<div class="form-check form-switch">
+			<input class="form-check-input" type="checkbox" id="@($"led_{Led.Index}")" @onchange="@(args=> ChangeHandler(args, Led))">
+			<label class="form-check-label" for="@($"led_{Led.Index}")">@Led.Name</label>
+		</div>
+	}
+	else
+	{
+		<div class="form-check form-switch">
+			<input class="form-check-input" disabled type="checkbox" id="@($"led_{Led.Index}")" >
+			<label class="form-check-label" for="@($"led_{Led.Index}")">@Led.Name</label>
+		</div>
+	}
+}
+
+@code{
+
+	IEnumerable<LED> Leds = new List<LED>
+	{
+		new LED(1,	"Roof - Red" ),
+		new LED(2,	"Roof - Right 1" ),
+		new LED(3,	"Roof - Right 2" ),
+		new LED(4,	"Roof - Right 3" ),
+		new LED(5,	"Roof - Right 4" ),
+		new LED(6,  "Undefined" , enabled: false),
+		new LED(7,  "Roof - Left 1" ),
+		new LED(8,  "Roof - Left 2" ),
+		new LED(9,  "Roof - Left 3" ),
+		new LED(10, "Roof - Left 4" ),
+		new LED(11, "Floor - Lamp" ),
+	};
+
+	void ChangeHandler(ChangeEventArgs value, LED led)
+	{
+		led.State = (bool)value?.Value ;	
+		Console.WriteLine($"Change Led {led.Index} ({led.Name}) to {(led.State ? "on" : "off")}");
+
+		var res = http.PostAsync($"/Led/{led.Index}/{(led.State ? 255 : 0)}", null);
+
+	}
+}

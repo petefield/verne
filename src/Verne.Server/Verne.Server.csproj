@@ -1,25 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.11" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="System.Device.Gpio" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\vid.html" />
-    <None Include="wwwroot\video.mp4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\I2C.Components\I2C.Components.csproj" />
+    <ProjectReference Include="..\Verne.Controller\Verne.Controller.csproj" />
   </ItemGroup>
 
 </Project>

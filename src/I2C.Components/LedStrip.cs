@@ -6,7 +6,7 @@ public class LedStrip : ILedStrip
     IChannel _channel;
     bool _autoRefresh;
 
-    public LedStrip(I2C.IChannel channel) : this(11, channel, true) { }
+    public LedStrip(IChannel channel) : this(11, channel, true) { }
 
     public LedStrip(int length, IChannel channel, bool autoRefresh = false)
     {

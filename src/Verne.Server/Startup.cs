@@ -22,7 +22,8 @@ namespace server
         {
 
             services.AddControllers();
-            
+            services.AddRazorPages();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "server", Version = "v1" });
@@ -36,32 +37,29 @@ namespace server
                     o.AllowAnyMethod();
                 });
             });
-            
+            services.Configure<ChannelConfiguration>(Configuration.GetSection("I2CChannel"));
             services.AddSingleton<IChannel, Channel>(); 
             services.AddSingleton<ILedStrip, LedStrip>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseWebAssemblyDebugging();
 
             app.UseStaticFiles();
-
-
-     
-                app.UseDeveloperExceptionPage();
-                object value = app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "server v1"));
-          
-
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "server v1"));
             app.UseRouting();
-                    app.UseCors();
+            app.UseCors();
+            app.UseBlazorFrameworkFiles();
+
 
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
