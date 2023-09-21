@@ -8,20 +8,15 @@ var channel = new I2C.Channel(1, 0x28);
 
 var strip = new LedStrip(11, channel, autoRefresh: true);
 bool state = true; 
-int i = 0;
 
 while(true){
-            
-    while ( i < strip.Length  && i >=0)
+
+    for (int i = 0; i < strip.Length; i++)
     {
-        Console.WriteLine(i);
+           Console.WriteLine(i);
 
         strip[i] = state ? (byte)1 : (byte)0;
-        Task.Delay(60).Wait();
-        var inc =  (state ? 1 : -1);
-        Console.WriteLine(inc);
-
-        i += inc;
+        Task.Delay(1000).Wait();
     }
                 
     Console.WriteLine("swtich");

@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\I2C.Components\I2C.Components.csproj" />
+    <ProjectReference Include="..\I2C.Channel\I2C.Channel.csproj" />
+
   </ItemGroup>
 
 </Project>
