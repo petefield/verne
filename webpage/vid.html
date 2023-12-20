@@ -25,6 +25,12 @@
             object-fit: cover;
             object-position: center center;
         }
+
+        video.scale2{
+
+            transform:scale(1.1); 
+            cursor: none;
+        }
     </style>
 
 </head>
@@ -33,7 +39,7 @@
 
     <div class="frame">
 
-        <video id="ssvid" autoplay loop muted>
+        <video id="ssvid" class="scale2" autoplay loop muted>
             <source src="./video.mp4" type="video/mp4" />
         </video>
 
@@ -88,7 +94,7 @@
 
     function setLights(evt) {
 
-        fetch('http://192.168.0.4:5050/led', {
+        fetch('http://192.168.0.16:5100/led', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -11,6 +11,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+
+
+builder.Services.AddCors(options =>
+{
+   options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+        });
+});
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "server", Version = "v1" });
@@ -36,8 +48,7 @@ else
 }
 
 app.UseHttpsRedirection();
-
-app.UseBlazorFrameworkFiles();
+app.UseCors();
 app.UseStaticFiles();
 
 app.UseRouting();
