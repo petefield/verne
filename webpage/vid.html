@@ -53,17 +53,8 @@
         return +(Math.round(this + "e+" + places) + "e-" + places);
     }
 
-    var eventsDefinition = `[
-        ["1", [0,0,0,0,0,0]],
-        ["6", [1,1,1,1,1,1]],
-        ["7", [0,0,0,0,0,0]],
-        ["7.2", [1,0,1,0,0,1]],
-        ["7.5", [1,0,1,1,0,1]],
-        ["7.7", [1,1,1,1,1,1]],
-        ["52.7", [0,0,0,0,0,1]],
-        ["54.7", [1,1,1,1,1,1]],
-        ["59.7", [0,0,0,0,0,1]]
-    ]`;
+    var eventsDefinition = 
+        ["1",`[{"id": 1,"brightness":1},{"id": 5,"brightness":1}, {"id": 7, "brightness":1}, {"id": 8,"brightness": 1},{"id": 9,"brightness": 1}]`];
 
     var ssvid = document.getElementById('ssvid');
 
@@ -74,15 +65,23 @@
     var events = new Map();
 
     function vidHandler(time) {
-        var t = time.toString();
+        var t = Math.floor(time);
+
+        console.log(time);
+
 
         if (Math.floor(time) == 0 && events.size == 0) {
             console.log("Starting...");
-            events = new Map(JSON.parse(eventsDefinition))
+            events.set(1 , `[{"id": 1,"brightness":0},{"id": 5,"brightness":1}, {"id": 7, "brightness":1}, {"id": 8,"brightness": 1},{"id": 9,"brightness": 1}]`);
+            events.set(10, `[{"id": 5,"brightness":0}]`);
+            events.set(12, `[{"id": 5,"brightness":1}]`);
+
+            events.set(53, `[{"id": 1,"brightness":1}]`);
+
         }
         else {
             let evt = events.get(t);
-
+            console.log(evt);
             if (evt != null) {
                 setLights(evt);
                 events.delete(t);
@@ -94,12 +93,12 @@
 
     function setLights(evt) {
 
-        fetch('http://192.168.0.16:5100/led', {
+        fetch('http://localhost:5100/led', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(evt.map((b, index) => ({ id: index, brightness: b })))
+            body: evt
         })
             .then(response => response.json())
             .then(data => {
